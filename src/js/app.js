@@ -9,7 +9,8 @@ sapientApp.config(function($stateProvider, $urlRouterProvider) {
         .state('sapient', {
             url: '/sapient',
             templateUrl: 'views/sapient.html',
-            controller :'sapientCtrl'
+            controller :'sapientCtrl',
+            controllerAs :'$ctrl'
         })
         
 
