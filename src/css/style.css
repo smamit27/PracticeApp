@@ -4,7 +4,7 @@ body{
 }
 * {
     box-sizing: border-box;
-    text-transform: uppercase;
+   
 }
 .left{
     float: left;
