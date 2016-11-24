@@ -17,13 +17,9 @@
    <div class="row">
       <div class="sapient-col-9 left">
          <div class="sapient-col-6 left">
-              <select ng-model="test[0]" ng-options="color for color in test">
-    </select>  
-    
-     
            <img src="img/T1.jpg" class="imgDetail">
 
-           <select ng-model="$ctrl.test[0]" ng-options="color for color in $ctrl.test">
+           <select  ng-model="$ctrl.test[0]" ng-options="item for item in $ctrl.test" ng-change="$ctrl.testmethod($ctrl.test)">
     </select>  
          </div>
          <div class="sapient-col-6 left">
