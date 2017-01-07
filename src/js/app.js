@@ -8,9 +8,11 @@ sapientApp.config(function($stateProvider, $urlRouterProvider) {
         
         .state('sapient', {
             url: '/sapient',
-            templateUrl: 'views/sapient.html',
-            controller :'sapientCtrl',
-            controllerAs :'$ctrl'
+            template:" <sapient-app-comp></sapient-app-comp>",
+        })
+           .state('firebase', {
+            url: '/firebase',
+            template:" <firebase-app-comp></sapient-app-comp>",
         })
         
 
