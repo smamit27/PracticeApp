@@ -1,2 +1,2 @@
-# PracticeApp
+# SapientApp
 It is app for new development
