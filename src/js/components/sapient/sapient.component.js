@@ -1,57 +1,52 @@
-angular.module('sapientApp').component('sapientAppComp',{
+angular.module("sapientApp").component("sapientAppComp",{
     
     templateUrl:"js/components/sapient/sapient.template.html",
     controller:function($http,$scope){
-         $http.get("json/cart.json")
-    .then(function(response) {
+    $http.get("json/cart.json").then((response) =>{
         $scope.sapientLength = response.data.productsInCart.length;
         $scope.ProductDetail = response.data.productsInCart;
-        
-         $scope.total = 0;
-            for(var i = 0; i < $scope.ProductDetail.length; i++){
-                var product = $scope.ProductDetail[i];
-                $scope.total += product.p_price;  
-              
-                
+        $scope.getDataProduct();
+    });
+    $scope.quantity = 1;
+    $scope.getDataProduct = () =>{
+        $scope.total = 0;
+            for(let value of $scope.ProductDetail){
+                $scope.total += value.p_price;
             }
-            if($scope.ProductDetail.length == 3){
-                    var a = ($scope.total * 5)/100;
-                    console.log(a);
-
+            if($scope.ProductDetail.length >= 1 &&  $scope.ProductDetail.length == 2 ){
+                    $scope.discount= 0;
             }
-            else if( $scope.ProductDetail.length >3 && $scope.ProductDetail.length <= 6){
-                var a = ($scope.total * 10)/100;
-                    console.log(a);
+             if($scope.ProductDetail.length == 3 ){
+                    $scope.discount= ($scope.total * 5)/100;
             }
-            else if($scope.ProductDetail.length >7 && $scope.ProductDetail.length <= 10){
-                var a = ($scope.total * 10)/100;
-                    console.log(a);
+            else if( $scope.ProductDetail.length > 3 && $scope.ProductDetail.length <= 6){
+                $scope.discount = ($scope.total * 10)/100;
             }
-
+            else if($scope.ProductDetail.length > 6 && $scope.ProductDetail.length <= 10){
+                $scope.discount = ($scope.total * 25)/100;
+            }
+            if($scope.ProductDetail.length == 0){
+                $scope.zeroLength =  true;
+                $scope.dataShow = true
+            }
+            $scope.sum =   $scope.total - $scope.discount;
             return $scope.total;
             
-    
-      
-         
-
-    });
-    $scope.EditData = (data) => 
-    {
+    }
+    $scope.editOverlay = (data) => {
         $scope.modalDataImages = data;
         $scope.modalDataShow = true;
 
     }
-    $scope.closeData = ()=>{
+    $scope.closeOverlay = ()=>{
          $scope.modalDataShow = false;
     }
-    $scope.deleteData = (data) =>{
+    $scope.deleteOverlay = (data) =>{
         let index = $scope.ProductDetail.indexOf(data);
-        console.log(index);
         $scope.ProductDetail.splice(index,1);
-        $scope.sapientLength  = $scope.ProductDetail.length;        
-
-    }
-
-    }
+        $scope.sapientLength  = $scope.ProductDetail.length;
+        $scope.getDataProduct();
+     }
+  }
 
 });

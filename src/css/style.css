@@ -1,10 +1,15 @@
 body{
     margin:0px;
     padding:0px;
+    font-family: sans-serif;
+    color:#888;
 }
 * {
     box-sizing: border-box;
    
+}
+header{
+    height:100px;
 }
 .left{
     float: left;
@@ -12,20 +17,40 @@ body{
 .right{
     float:right;
 }
+.mbm{
+    margin-bottom: 10px;
+}
+.mtm{
+    margin-top: 10px; 
+}
 .row{
     width: 100%;
-    height: 285px;
+    height: 200px;
     padding: 10px;
 }
 
-.imgDetail{
-    /*width: 65%;
-    height:250px;*/
-}
 .sapient-main-width{
     width: 100%;
     height:40px;
     padding: 10px;
+}
+p{
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    text-decoration: underline;
+}
+.fontSizeA{
+    font-size: 26px;
+}
+.borderTop{
+    border-top: 6px solid #ccc;
+}
+.borderHeight{
+        height: 50px;
+
+
 }
 
 .sapient-col-1 {width: 8.33%;}
@@ -40,8 +65,13 @@ body{
 .sapient-col-10 {width: 83.33%;}
 .sapient-col-11 {width: 91.66%;}
 .sapient-col-12 {width: 100%;}
+
 .uppercase{
     text-transform: uppercase;
+    cursor: pointer;
+}
+.capitalize{
+    text-transform: capitalize;
 }
 
 
@@ -52,13 +82,9 @@ body{
     padding:10px;
 
 }
-.sapient-color{
-     color: #ccc;
-}
+
 .sapient-main-container .headerSapient{
-    font-size: 30px;
-    color: #ccc;
-    height:50px;
+    font-size: 60px;
 }
 .border-right{
     border-right: 2px solid #ccc;
@@ -68,20 +94,21 @@ body{
 }
 .sapient-hr{
     width:100%;
-    border:1px solid;
-   border-width: 1px;
-   border-color: #ccc;
+    border-bottom:2px solid #ccc;
+  
 }
 .sapient-hr-dark{
-    border:1px solid;
+    border:2px solid;
    border-width: 3px;
    border-color: #ccc;
 
 }
  .sapient-only-show-small{
-                display: none;
-
-    }
+    display: none;
+}
+.pam{
+    padding: 10%;
+}
     /* The Modal (background) */
 .modal {
     
@@ -113,11 +140,19 @@ body{
     font-size: 28px;
     font-weight: bold;
 }
+.imgDetailChange{
+    width: 75%;
+    height:75%;
+}
+.valueInput{
+    width: 35px;
+    height: 30px;
+}
 
 
 
 @media only screen and (min-width: 360px) and (max-width:670px){
-    .sapient-col-9 {
+    .sapient-col-9,.sapient-col-12,.sapient-col-4,.sapient-col-8{
         width:100%
     }
     .sapient-small-hidden{
@@ -127,13 +162,18 @@ body{
                 display: block;
 
     }
-    .row{
- 
-    height: 320px;
-  
+    header{
+    height:50px;
 }
+    .borderHeight{
+        height: 90px;
+
+
+}
+    .row{
+        height: 300px;
+       }
 .sapient-main-container .headerSapient{
     font-size: 20px;
-   
-}
+   }
 }

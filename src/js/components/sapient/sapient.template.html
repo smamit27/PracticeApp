@@ -1,70 +1,149 @@
 <div class="sapient-main-container">
-   <header>
-      <span class="headerSapient uppercase">your shopping bag</span>
-      <span class="right sapient-only-show-small uppercase">{{sapientLength}} Items</span>
-   </header>
-   <div class="sapient-hr"></div>
-   <div class="sapient-main-width sapient-small-hidden">
-      <span class="sapient-col-9 left uppercase">{{sapientLength}}  Items    
-              
-</span>
-      <span class="sapient-col-1 left uppercase">size</span>
-      <span class="sapient-col-1 left uppercase">qty</span>
-      <span class="sapient-col-1 left uppercase">price</span>
-   </div>
-   <div class="sapient-hr-dark"></div>
-   <div class="row" ng-repeat="ctrl in ProductDetail">
-      <div class="sapient-col-9 left">
-         <div class="sapient-col-6 left">
-           <img ng-src="{{ctrl.images}}" class="imgDetail">
-         </div>
-         <div class="sapient-col-6 left">
-            <p class="uppercase">{{ctrl.p_name}} {{ctrl.p_variation}}</p>
-            <p><span>Style #:</span><span class="uppercase"> {{ctrl.p_style}}</span></p>
-            <p><span>Colour:</span>
-               <span>{{ctrl.p_selected_color.name}}</span>
-            </p>
-            <p class="sapient-small-hidden">
-                  <span class="border-right uppercase" ng-click="EditData(ctrl)">Edit</span>
-                  <span class="border-right uppercase" ng-click="deleteData(ctrl)">Delete</span>
-                  <span class="uppercase">Save For Later</span></p>
-            <div class="sapient-only-show-small">
-               <p><span >size</span><span>{{ctrl.p_selected_size.code}}</span></p>
-               <p> <span>size</span><span>4</span></p>
-               <p> <span>size</span><span>{{ctrl.c_currency}}{{ctrl.p_price}}</span></p>
-            </div>
-         </div>
-      </div>
-      <p class="sapient-only-show-small">
-         <span class="border-right uppercase" ng-click="EditData(ctrl)">Edit</span>
-         <span class="border-right uppercase" ng-click="deleteData(ctrl)">Delete</span>
-         <span>Save For Later</span>
-      </p>
-      <div class="sapient-small-hidden">
-         <div class="sapient-col-1 left">{{ctrl.p_selected_size.code}}</div>
-         <div class="sapient-col-1 left">1</div>
-         <div class="sapient-col-1 left" >{{ctrl.c_currency}}{{ctrl.p_price}}</div>
-      </div>
-   </div>
-  
-   <div class="sapient-hr"></div>
-   <div>
-         total:{{total}}
+    <header>
+        <span class="headerSapient uppercase">your shopping bag</span>
+        <span class="right sapient-only-show-small uppercase">{{sapientLength}} Items</span>
+    </header>
+   
+    <div class="sapient-hr"></div>
+    <div class="sapient-main-width sapient-small-hidden">
+        <span class="sapient-col-9 left uppercase">{{sapientLength}}  Items    
+      </span>
+        <span class="sapient-col-1 left uppercase">size</span>
+        <span class="sapient-col-1 left uppercase">qty</span>
+        <span class="sapient-col-1 left uppercase">price</span>
+    </div>
+    <div class="sapient-hr-dark"></div>
+     <div ng-hide="zeroLength">
+          <div class="row sapient-hr" ng-repeat="ctrl in ProductDetail">
+              <div class="sapient-col-9 left">
+                  <div class="sapient-col-6 left">
+                      <img ng-src="{{ctrl.images}}" ng-click="editOverlay(ctrl)" class="imgDetail">
+                  </div>
+                  <div class="sapient-col-6 left">
+                      <p class="uppercase mbm">{{ctrl.p_name}} {{ctrl.p_variation}}</p>
+                      <p class="mbm">
+                        <span>Style #:</span>
+                        <span class="uppercase"> {{ctrl.p_style}}</span>
+                      </p>
+                      <p class="mbm">
+                          <span>Colour:</span>
+                          <span class="capitalize">{{ctrl.p_selected_color.name}}</span>
+                      </p>
+                      <div class="sapient-small-hidden">
+                          <span class="border-right uppercase" ng-click="editOverlay(ctrl)">Edit</span>
+                          <span class="border-right uppercase" ng-click="deleteOverlay(ctrl)">X Remove</span>
+                          <span class="uppercase">Save For Later</span>
+                      </div>
+                      <div class="sapient-only-show-small">
+                          <p><span>Size: </span><span>{{ctrl.p_selected_size.code}}</span>
+                          </p>
+                          <p><span>Qty: </span>
+                              <span><input type="text" class="valueInput" ng-model="quantity" >
+                             </span>
+                          </p>
+                          <p> <span>Price : </span><span>{{ctrl.c_currency}}{{ctrl.p_price}}</span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="sapient-only-show-small">
+                  <span class="border-right uppercase" ng-click="editOverlay(ctrl)">Edit</span>
+                  <span class="border-right uppercase" ng-click="deleteOverlay(ctrl)">X Remove</span>
+                  <span>Save For Later</span>
+              </div>
+              <div class="sapient-small-hidden">
+                  <div class="sapient-col-1 left">{{ctrl.p_selected_size.code}}</div>
+                  <div class="sapient-col-1 left">
+                    <input type="text" class="valueInput" ng-model="quantity"/>
+                  </div>
+                  <div class="sapient-col-1 left">{{ctrl.c_currency}}{{ctrl.p_price}}</div>
+              </div>
+          </div>
 
+          <div class="sapient-hr"></div>
+          <div class="row">
+                <div class="sapient-col-4 sapient-small-hidden left">
+                        <div class="sapient-col-12 mbm">
+                              <p>Need your Help</p>
+                            <p>Or have questions ?</p>
+                        </div>
+                        <div class="sapient-col-12 mbm">
+                              <p>Call Customer Care Service at </p>
+                            <p>1-800-555-5555</p>
+                        </div>
+                        <div class="sapient-col-12 mbm">
+                             <p> <a>chat with one of</a></p>
+                            <p><a>our stttylists</a></p>
+                        </div>
+                        <div class="sapient-col-12 mbm">
+                              <p>See Return</p>
+                            <p>& Exchange Policy</p>
+                        </div>
+                  </div>
+                <div class="sapient-col-8 left">
+                    <div class="sapient-col-12 borderHeight">
+                      <div class="sapient-col-4 left">
+                          <p>ENTER PROMOTIONAL CODE </p>
+                          <p>OR GIFT CARD </p>
+                          
+                      </div>
+                      <div class="sapient-col-4 left">
+                          <input type="text" class="">
+                      </div>
+                      <div class="sapient-col-2 left">
+                          <button>Apply</button>
+                      </div>
+                      </div>
+                  <div class="sapient-col-12 borderTop">
+                    <div class="sapient-col-12 ">
+                        <div class="sapient-col-10 left mbm mtm uppercase">SubTotal</div>
+                        <div class="sapient-col-2 mbm mtm left fontSizeA">$ {{total}}</div>
+                        </div>
+                    <div class="sapient-col-12 ">
+                        <div class="sapient-col-10 mbm left uppercase">Promotion Code JF10 applied</div>
+                        <div class="sapient-col-2 mbm left fontSizeA">$ {{discount}}</div>
+                    </div>
+                    <div class="sapient-col-12 ">
+                        <div class="sapient-col-10 mbm left">
+                        <p class="uppercase">Estimated shipping</p>
+                        <p>You qualify for free shopping </p>
+                        <p>Because your order is over $50</p>
+                        </div>
+                        <div class="sapient-col-2 mbm left">FREE</div>
+                    </div>
+                    <div class="sapient-col-12 ">
+                    <div class="sapient-col-10 mbm left">
+                      <p>Estimated Total</p>
+                          <p>Tax will be applied during checkout </p>
+                    </div>
+                    <div class="sapient-col-2 mbm left fontSizeA">${{sum}}</div>
+                    </div>
+                </div>
+                </div>
+          </div>
 </div>
+<div ng-show="dataShow">
+    Please Add Item To Cart
+</div>  
 <!-- Trigger/Open The Modal -->
 <div ng-if="modalDataShow">
 
-<!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close" ng-click="closeData()">&times;</span>
-     <div class="sapient-col-6 left">
-           <img ng-src="{{modalDataImages.images}}" class="imgDetail">
-         </div>
+    <span class="close" ng-click="closeOverlay()">&times;</span>
+        <div class="sapient-col-6 left">
+            <div class="pam">
+              <div class="sapient-hr-dark"></div>
+              <p>PAISLEY JEANS</p>
+              <span>{{modalDataImages.c_currency}}{{modalDataImages.p_price}}</span>
+          </div>
+        </div>
+        <div class="sapient-col-6 left">
+            <img ng-src="{{modalDataImages.images}}" ng-click="editOverlay(ctrl)" class="imgDetailChange">
+        </div>
+     </div>
+    </div>
   </div>
-
-</div>
 </div>
