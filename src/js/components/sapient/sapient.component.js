@@ -2,12 +2,18 @@ angular.module("sapientApp").component("sapientAppComp",{
     
     templateUrl:"js/components/sapient/sapient.template.html",
     controller:function($http,$scope){
+    //Get Json From Json File//    
     $http.get("json/cart.json").then((response) =>{
         $scope.sapientLength = response.data.productsInCart.length;
         $scope.ProductDetail = response.data.productsInCart;
         $scope.getDataProduct();
     });
+    //Get Json From Json File End//  
+    //Set The Quantity//
     $scope.quantity = 1;
+     //Set The Quantity End//
+
+     //Write Logic for Discount//
     $scope.getDataProduct = () =>{
         $scope.total = 0;
             for(let value of $scope.ProductDetail){
@@ -33,20 +39,30 @@ angular.module("sapientApp").component("sapientAppComp",{
             return $scope.total;
             
     }
+     //Write Logic for Discount End//
+     
+    // editOverlay//
     $scope.editOverlay = (data) => {
         $scope.modalDataImages = data;
         $scope.modalDataShow = true;
 
     }
+      // editOverlay End//
+
+      //closeOverlay//
     $scope.closeOverlay = ()=>{
          $scope.modalDataShow = false;
     }
+    //closeOverlay End//
+
+    //deleteOverlay//
     $scope.deleteOverlay = (data) =>{
         let index = $scope.ProductDetail.indexOf(data);
         $scope.ProductDetail.splice(index,1);
         $scope.sapientLength  = $scope.ProductDetail.length;
         $scope.getDataProduct();
      }
+        //deleteOverlay End//
   }
 
 });
